@@ -1,0 +1,20 @@
+cabal-version: 3.8
+name:          a
+version:       0
+
+executable a
+  build-depends:
+    , base
+    , template-haskell
+
+  main-is:       a.hs
+  cxx-sources:   b.cxx
+
+  -- this doesn't work while must
+  cxx-options:   -DONE=1
+
+  -- this works but is a workaround
+  -- ghc-options:   -optcxx=-DONE=1
+
+  -- this works
+  cxx-options:   -DTWO=2
