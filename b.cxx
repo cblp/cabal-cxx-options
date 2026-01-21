@@ -1,3 +1,3 @@
-int test_two() {
-    return TWO;
+int test_four_cxx() {
+    return FOUR;
 }
