@@ -2,23 +2,36 @@ cabal-version: 3.8
 name:          a
 version:       0
 
-executable test_addForeignSource
+executable test_addForeignSource_c
   build-depends: base, template-haskell
 
-  main-is:       a.hs
+  main-is:       test_addForeignSource_c.hs
   -- this doesn't work while must
   cc-options:    -DONE=1
-  cxx-options:   -DTWO=2
   -- this works but is a workaround
   -- ghc-options:   -optc=-DONE=1
+
+executable test_addForeignSource_cxx
+  build-depends: base, template-haskell
+
+  main-is:       test_addForeignSource_cxx.hs
+  -- this doesn't work while must
+  cxx-options:   -DTWO=2
+  -- this works but is a workaround
   -- ghc-options:   -optcxx=-DTWO=2
 
-executable test_c_cxx_sources
+executable test_c_sources
   build-depends: base
   main-is:       main.hs
 
-  cxx-sources:   b.cxx
-  c-sources:     c.c
+  c-sources:     test_c_sources.c
   -- this works
   cc-options:    -DTHREE=3
+
+executable test_cxx_sources
+  build-depends: base
+  main-is:       main.hs
+
+  cxx-sources:   test_cxx_sources.cxx
+  -- this works
   cxx-options:   -DFOUR=4
